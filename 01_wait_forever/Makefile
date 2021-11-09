@@ -39,7 +39,7 @@ else ifeq ($(BSP),k210)
     OBJDUMP_BINARY    = riscv64gc-none-elf-objdump
     NM_BINARY         = riscv64gc-none-elf-nm
     READELF_BINARY    = riscv64gc-none-elf-readelf
-    LINKER_FILE       = src/bsp/raspberrypi/link.ld
+    LINKER_FILE       = src/bsp/k210/link.ld
     RUSTC_MISC_ARGS   =
 
 else ifeq ($(BSP),rpi4)
@@ -136,7 +136,7 @@ else # QEMU is supported.
 
 qemu: $(KERNEL_BIN)
 	$(call colorecho, "\nLaunching QEMU")
-	@$(DOCKER_QEMU) $(EXEC_QEMU) $(QEMU_RELEASE_ARGS) -kernel $(KERNEL_BIN)
+	@$(EXEC_QEMU) $(QEMU_RELEASE_ARGS) -kernel $(KERNEL_BIN)
 endif
 
 ##------------------------------------------------------------------------------
