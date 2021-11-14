@@ -40,7 +40,7 @@ else ifeq ($(BSP),k210)
     NM_BINARY         = riscv64gc-none-elf-nm
     READELF_BINARY    = riscv64gc-none-elf-readelf
     LINKER_FILE       = src/bsp/k210/link.ld
-    RUSTC_MISC_ARGS   =
+    RUSTC_MISC_ARGS   = -C target-cpu=generic-rv64
 
 else ifeq ($(BSP),rpi4)
     TARGET            = aarch64-unknown-none-softfloat

@@ -8,7 +8,10 @@
 OUTPUT_ARCH(riscv)
 __k210_load_addr = 0x80000000;
 ENTRY(__k210_load_addr)
-
+PHDRS
+{
+    segment_rx PT_LOAD FLAGS(5); /* 5 == RX */
+}
 SECTIONS
 {
     . =  __k210_load_addr;
@@ -16,8 +19,8 @@ SECTIONS
     /***********************************************************************************************
     * Code
     ***********************************************************************************************/
-    .text :
+ .text :
     {
-        *(.text._start)
-    }
+        KEEP(*(.text._start))
+    } :segment_rx
 }
