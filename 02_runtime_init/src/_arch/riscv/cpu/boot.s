@@ -11,8 +11,10 @@
 // fn _start()
 //------------------------------------------------------------------------------
 _start:
+	la sp , __boot_core_stack_end_exclusive
+	j _start_rust
 	// Infinitely wait for events (aka "park the core").
 L_parking_loop:
-	WFI
-	J	L_parking_loop
+	wfi
+	j	L_parking_loop
 
