@@ -136,7 +136,7 @@ else # QEMU is supported.
 
 qemu: $(KERNEL_BIN)
 	$(call colorecho, "\nLaunching QEMU")
-	@$(EXEC_QEMU) $(QEMU_RELEASE_ARGS) -kernel $(KERNEL_BIN)
+	@$(DOCKER_QEMU) $(EXEC_QEMU) $(QEMU_RELEASE_ARGS) -kernel $(KERNEL_BIN)
 endif
 
 ##------------------------------------------------------------------------------

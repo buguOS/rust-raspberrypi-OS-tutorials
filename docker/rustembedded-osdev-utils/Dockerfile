@@ -16,29 +16,29 @@ COPY Gemfile .
 
 RUN set -ex;                                      \
     tempPkgs='                                    \
-        automake                                  \
-        bison                                     \
-        build-essential                           \
-        flex                                      \
-        git                                       \
-        libtool                                   \
-        ninja-build                               \
-        pkg-config                                \
-        wget                                      \
+    automake                                  \
+    bison                                     \
+    build-essential                           \
+    flex                                      \
+    git                                       \
+    libtool                                   \
+    ninja-build                               \
+    pkg-config                                \
+    wget                                      \
     ';                                            \
     apt-get update;                               \
     apt-get install -q -y --no-install-recommends \
-        $tempPkgs                                 \
-        # persistent packages
-        ca-certificates                           \
-        gdb-multiarch                             \
-        libpixman-1-dev                           \
-        libglib2.0-dev                            \
-        libusb-1.0.0-dev                          \
-        locales                                   \
-        python3                                   \
-        ruby                                      \
-        ruby-dev                                  \
+    $tempPkgs                                 \
+    # persistent packages
+    ca-certificates                           \
+    gdb-multiarch                             \
+    libpixman-1-dev                           \
+    libglib2.0-dev                            \
+    libusb-1.0.0-dev                          \
+    locales                                   \
+    python3                                   \
+    ruby                                      \
+    ruby-dev                                  \
     ;                                             \
     # Ruby dependencies
     gem install bundler;                            \
@@ -47,9 +47,9 @@ RUN set -ex;                                      \
     git clone https://git.qemu.org/git/qemu.git;               \
     cd qemu;                                                   \
     git checkout tags/v5.2.0;                                  \
-    ./configure --target-list=aarch64-softmmu --enable-modules \
-        --enable-tcg-interpreter --enable-debug-tcg            \
-        --python=/usr/bin/python3;                             \
+    ./configure --target-list=riscv64-softmmu,aarch64-softmmu --enable-modules \
+    --enable-tcg-interpreter --enable-debug-tcg            \
+    --python=/usr/bin/python3;                             \
     make -j8;                                                  \
     make install;                                              \
     cd ..;                                                     \
@@ -67,10 +67,10 @@ RUN set -ex;                                      \
     wget https://developer.arm.com/-/media/Files/downloads/gnu-a/10.2-2020.11/binrel/gcc-arm-10.2-2020.11-x86_64-aarch64-none-elf.tar.xz; \
     tar -xf gcc-arm-10*;                                                                                                                  \
     cp                                                                                                                                    \
-        gcc-arm-10*/bin/aarch64-none-elf-objdump                                                                                          \
-        gcc-arm-10*/bin/aarch64-none-elf-readelf                                                                                          \
-        gcc-arm-10*/bin/aarch64-none-elf-nm                                                                                               \
-        /usr/local/bin/;                                                                                                                  \
+    gcc-arm-10*/bin/aarch64-none-elf-objdump                                                                                          \
+    gcc-arm-10*/bin/aarch64-none-elf-readelf                                                                                          \
+    gcc-arm-10*/bin/aarch64-none-elf-nm                                                                                               \
+    /usr/local/bin/;                                                                                                                  \
     rm -rf gcc-arm-10*;                                                                                                                   \
     # Cleanup
     apt-get purge -y --auto-remove $tempPkgs; \
