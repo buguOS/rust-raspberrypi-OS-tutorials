@@ -10,7 +10,7 @@ include ../common/docker.mk
 ##--------------------------------------------------------------------------------------------------
 
 # Default to the RPi3.
-BSP ?= rpi3
+BSP ?= k210
 
 
 
@@ -41,6 +41,18 @@ else ifeq ($(BSP),rpi4)
     READELF_BINARY    = aarch64-none-elf-readelf
     LINKER_FILE       = src/bsp/raspberrypi/link.ld
     RUSTC_MISC_ARGS   = -C target-cpu=cortex-a72
+else ifeq ($(BSP),k210)
+    TARGET            = riscv64gc-unknown-none-elf
+    KERNEL_BIN        = kernel8.img
+    QEMU_BINARY       = qemu-system-riscv64
+    QEMU_MACHINE_TYPE = virt
+    QEMU_RELEASE_ARGS = -d in_asm -display none
+    OBJDUMP_BINARY    = riscv64gc-none-elf-objdump
+    NM_BINARY         = riscv64gc-none-elf-nm
+    READELF_BINARY    = riscv64gc-none-elf-readelf
+    LINKER_FILE       = src/bsp/k210/link.ld
+    RUSTC_MISC_ARGS   = -C target-cpu=generic-rv64
+
 endif
 
 QEMU_MISSING_STRING = "This board is not yet supported for QEMU."

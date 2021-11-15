@@ -7,3 +7,6 @@
 #[cfg(target_arch = "aarch64")]
 #[path = "../_arch/aarch64/cpu/boot.rs"]
 mod arch_boot;
+#[cfg(target_arch = "riscv64")]
+#[path = "../_arch/riscv/cpu/boot.rs"]
+mod arch_boot;

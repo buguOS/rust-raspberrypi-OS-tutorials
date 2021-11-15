@@ -11,6 +11,7 @@ lto = true
 default = []
 bsp_rpi3 = []
 bsp_rpi4 = []
+bsp_k210 = []
 
 [[bin]]
 name = "kernel"
@@ -25,4 +26,6 @@ path = "src/main.rs"
 # Platform specific dependencies
 [target.'cfg(target_arch = "aarch64")'.dependencies]
 cortex-a = { version = "6.x.x" }
+[target.'cfg(target_arch = "riscv64")'.dependencies]
+riscv = { version = "0.7.0" }
 

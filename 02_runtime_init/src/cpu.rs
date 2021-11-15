@@ -8,9 +8,9 @@
 #[path = "_arch/aarch64/cpu.rs"]
 mod arch_cpu;
 
-mod boot;
+#[cfg(target_arch = "riscv64")]
+#[path = "_arch/riscv/cpu.rs"]
+mod arch_cpu;
 
-//--------------------------------------------------------------------------------------------------
-// Architectural Public Reexports
-//--------------------------------------------------------------------------------------------------
+mod boot;
 pub use arch_cpu::wait_forever;
