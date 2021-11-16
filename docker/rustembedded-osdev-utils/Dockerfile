@@ -71,7 +71,16 @@ RUN set -ex;                                      \
     gcc-arm-10*/bin/aarch64-none-elf-readelf                                                                                          \
     gcc-arm-10*/bin/aarch64-none-elf-nm                                                                                               \
     /usr/local/bin/;                                                                                                                  \
-    rm -rf gcc-arm-10*;                                                                                                                   \
+    rm -rf gcc-arm-10*;                                                                                                               \
+    # GCC riscv64 tools
+    wget https://static.dev.sifive.com/dev-tools/freedom-tools/v2020.08/riscv64-unknown-elf-gcc-10.1.0-2020.08.2-x86_64-linux-ubuntu14.tar.gz; \
+    tar -xf riscv64-unknown-elf-gcc-10*;                                                                                                                  \
+    cp                                                                                                                                    \
+    riscv64-unknown-elf-gcc-10*/bin/riscv64-unknown-elf-objdump                                                                                          \
+    riscv64-unknown-elf-gcc-10*/bin/riscv64-unknown-elf-readelf                                                                                          \
+    riscv64-unknown-elf-gcc-10*/bin/riscv64-unknown-elf-nm                                                                                               \
+    /usr/local/bin/;                                                                                                                  \
+    rm -rf riscv64-unknown-elf-gcc-10*;                                                                                                                \
     # Cleanup
     apt-get purge -y --auto-remove $tempPkgs; \
     apt-get autoremove -q -y;                 \
