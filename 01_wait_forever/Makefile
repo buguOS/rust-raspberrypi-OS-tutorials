@@ -35,7 +35,7 @@ else ifeq ($(BSP),k210)
     KERNEL_BIN        = kernel8.img
     QEMU_BINARY       = qemu-system-riscv64
     QEMU_MACHINE_TYPE = virt
-    QEMU_RELEASE_ARGS = -d in_asm -display none
+    QEMU_RELEASE_ARGS = -d in_asm -display none -bios none
     OBJDUMP_BINARY    = riscv64-unknown-elf-objdump
     NM_BINARY         = riscv64-unknown-elf-nm
     READELF_BINARY    = riscv64-unknown-elf-readelf

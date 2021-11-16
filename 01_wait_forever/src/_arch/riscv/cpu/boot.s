@@ -12,8 +12,8 @@
 //------------------------------------------------------------------------------
 _start:
 	// Infinitely wait for events (aka "park the core").
-L_parking_loop:
-	WFI
-	J	L_parking_loop
+.L_parking_loop:
+	wfi
+	j	.L_parking_loop
 
 
