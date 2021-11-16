@@ -46,10 +46,10 @@ else ifeq ($(BSP),k210)
     KERNEL_BIN        = kernel8.img
     QEMU_BINARY       = qemu-system-riscv64
     QEMU_MACHINE_TYPE = virt
-    QEMU_RELEASE_ARGS = -d in_asm -display none
-    OBJDUMP_BINARY    = riscv64gc-none-elf-objdump
-    NM_BINARY         = riscv64gc-none-elf-nm
-    READELF_BINARY    = riscv64gc-none-elf-readelf
+    QEMU_RELEASE_ARGS = -d in_asm -display none -bios none
+    OBJDUMP_BINARY    = riscv64-unknown-elf-objdump
+    NM_BINARY         = riscv64-unknown-elf-nm
+    READELF_BINARY    = riscv64-unknown-elf-readelf
     LINKER_FILE       = src/bsp/k210/link.ld
     RUSTC_MISC_ARGS   = -C target-cpu=generic-rv64
 
